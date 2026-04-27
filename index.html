@@ -30,6 +30,7 @@
     overflow-x: hidden;
   }
 
+  /* Background grid */
   body::before {
     content: '';
     position: fixed;
@@ -50,7 +51,11 @@
     padding: 40px 20px 80px;
   }
 
-  header { text-align: center; margin-bottom: 60px; }
+  /* Header */
+  header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
 
   .badge {
     display: inline-block;
@@ -73,12 +78,20 @@
     margin-bottom: 12px;
   }
 
+  h1 span {
+    display: inline-block;
+  }
   h1 .w-and { color: var(--accent-and); }
   h1 .w-or  { color: var(--accent-or); }
   h1 .w-not { color: var(--accent-not); }
 
-  .subtitle { color: var(--muted); font-size: 1rem; font-weight: 400; }
+  .subtitle {
+    color: var(--muted);
+    font-size: 1rem;
+    font-weight: 400;
+  }
 
+  /* Section titles */
   .section-label {
     font-family: 'Space Mono', monospace;
     font-size: 10px;
@@ -97,6 +110,7 @@
     background: var(--border);
   }
 
+  /* Cards */
   .ops-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -110,6 +124,7 @@
     padding: 28px;
     position: relative;
     overflow: hidden;
+    transition: border-color 0.3s;
   }
 
   .op-card::before {
@@ -122,6 +137,8 @@
   .op-card.and::before { background: var(--accent-and); }
   .op-card.or::before  { background: var(--accent-or); }
   .op-card.not::before { background: var(--accent-not); }
+
+  .op-card:hover { border-color: #333355; }
 
   .op-name {
     font-family: 'Space Mono', monospace;
@@ -156,11 +173,15 @@
     border-bottom: 1px solid var(--border);
   }
 
-  .truth-table td { padding: 6px 10px; text-align: center; }
+  .truth-table td {
+    padding: 6px 10px;
+    text-align: center;
+  }
 
   .v { color: var(--true); font-weight: 700; }
   .f { color: var(--false); font-weight: 700; }
 
+  /* Interactive demo inside card */
   .card-demo {
     margin-top: 20px;
     padding-top: 20px;
@@ -176,7 +197,11 @@
     margin-bottom: 8px;
   }
 
-  .toggle-group { display: flex; gap: 8px; flex-wrap: wrap; }
+  .toggle-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
 
   .toggle-btn {
     font-family: 'Space Mono', monospace;
@@ -215,6 +240,7 @@
   .result-chip.true-r  { color: var(--true);  border-color: var(--true);  background: rgba(0,230,118,0.08); }
   .result-chip.false-r { color: var(--false); border-color: var(--false); background: rgba(255,23,68,0.08); }
 
+  /* ── Builder Section ── */
   .builder {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -222,10 +248,24 @@
     margin-bottom: 60px;
   }
 
-  .builder-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; }
-  .builder-sub { color: var(--muted); font-size: 0.85rem; margin-bottom: 28px; }
+  .builder-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
 
-  .tokens { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .builder-sub {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 28px;
+  }
+
+  .tokens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
 
   .token {
     font-family: 'Space Mono', monospace;
@@ -242,9 +282,9 @@
   .token:hover { background: rgba(255,255,255,0.04); }
   .token.tok-true   { border-color: var(--true);  color: var(--true); }
   .token.tok-false  { border-color: var(--false); color: var(--false); }
-  .token.tok-and    { border-color: var(--accent-and); color: var(--accent-and); }
-  .token.tok-or     { border-color: var(--accent-or);  color: var(--accent-or); }
-  .token.tok-not    { border-color: var(--accent-not); color: var(--accent-not); }
+  .token.tok-and    { border-color: var(--accent-and);  color: var(--accent-and); }
+  .token.tok-or     { border-color: var(--accent-or);   color: var(--accent-or); }
+  .token.tok-not    { border-color: var(--accent-not);  color: var(--accent-not); }
   .token.tok-open, .token.tok-close { border-color: #555; color: #aaa; }
 
   .expression-display {
@@ -259,18 +299,30 @@
     gap: 6px;
     margin-bottom: 16px;
     background: rgba(0,0,0,0.3);
+    cursor: text;
   }
 
-  .expr-token { padding: 2px 8px; border-radius: 2px; font-size: 0.85rem; }
+  .expr-token {
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-size: 0.85rem;
+  }
+
   .expr-token.et-true  { background: rgba(0,230,118,0.15); color: var(--true); }
   .expr-token.et-false { background: rgba(255,23,68,0.15);  color: var(--false); }
   .expr-token.et-and   { background: rgba(0,229,255,0.12);  color: var(--accent-and); }
   .expr-token.et-or    { background: rgba(255,107,53,0.12); color: var(--accent-or); }
   .expr-token.et-not   { background: rgba(179,136,255,0.12);color: var(--accent-not); }
   .expr-token.et-paren { color: #888; }
+
   .expr-placeholder { color: var(--muted); font-size: 0.85rem; }
 
-  .builder-controls { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+  .builder-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
 
   .btn {
     font-family: 'Space Mono', monospace;
@@ -283,19 +335,32 @@
     transition: all 0.2s;
   }
 
-  .btn-evaluate { border-color: var(--accent-and); color: var(--accent-and); }
+  .btn-evaluate {
+    border-color: var(--accent-and);
+    color: var(--accent-and);
+  }
   .btn-evaluate:hover { background: rgba(0,229,255,0.1); }
-  .btn-clear { border-color: var(--border); color: var(--muted); }
+
+  .btn-clear {
+    border-color: var(--border);
+    color: var(--muted);
+  }
   .btn-clear:hover { border-color: var(--false); color: var(--false); }
-  .btn-undo { border-color: var(--border); color: var(--muted); }
+
+  .btn-undo {
+    border-color: var(--border);
+    color: var(--muted);
+  }
   .btn-undo:hover { background: rgba(255,255,255,0.04); }
 
+  /* Result panel */
   .result-panel {
     padding: 20px;
     border: 1px solid var(--border);
     background: rgba(0,0,0,0.4);
     display: none;
   }
+
   .result-panel.show { display: block; }
 
   .result-answer {
@@ -309,7 +374,11 @@
   .result-answer.false-ans { color: var(--false); }
   .result-answer.error-ans { color: var(--accent-or); font-size: 1rem; }
 
-  .steps { list-style: none; font-family: 'Space Mono', monospace; font-size: 0.75rem; }
+  .steps {
+    list-style: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+  }
 
   .steps li {
     padding: 6px 0;
@@ -319,6 +388,7 @@
     align-items: center;
     gap: 10px;
   }
+
   .steps li:last-child { border-bottom: none; }
 
   .step-result { font-weight: 700; }
@@ -337,6 +407,14 @@
     flex-shrink: 0;
   }
 
+  /* error */
+  .error-msg {
+    color: var(--accent-or);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+  }
+
+  /* footer */
   footer {
     text-align: center;
     color: var(--muted);
@@ -365,13 +443,18 @@
     <p class="subtitle">Entenda e teste as operações lógicas fundamentais da computação</p>
   </header>
 
+  <!-- ── Operações ── -->
   <div class="section-label">01 — As três operações</div>
 
   <div class="ops-grid">
 
+    <!-- AND -->
     <div class="op-card and">
       <div class="op-name">AND</div>
-      <p class="op-desc">Resultado é <strong>Verdadeiro</strong> somente quando <em>ambas</em> as entradas são verdadeiras. "E" em português.</p>
+      <p class="op-desc">
+        Resultado é <strong>Verdadeiro</strong> somente quando<br>
+        <em>ambas</em> as entradas são verdadeiras. "E" em português.
+      </p>
       <table class="truth-table">
         <tr><th>A</th><th>B</th><th>A AND B</th></tr>
         <tr><td class="v">V</td><td class="v">V</td><td class="v">V</td></tr>
@@ -389,9 +472,13 @@
       </div>
     </div>
 
+    <!-- OR -->
     <div class="op-card or">
       <div class="op-name">OR</div>
-      <p class="op-desc">Resultado é <strong>Verdadeiro</strong> se <em>pelo menos uma</em> entrada for verdadeira. "OU" em português.</p>
+      <p class="op-desc">
+        Resultado é <strong>Verdadeiro</strong> se<br>
+        <em>pelo menos uma</em> entrada for verdadeira. "OU" em português.
+      </p>
       <table class="truth-table">
         <tr><th>A</th><th>B</th><th>A OR B</th></tr>
         <tr><td class="v">V</td><td class="v">V</td><td class="v">V</td></tr>
@@ -409,9 +496,13 @@
       </div>
     </div>
 
+    <!-- NOT -->
     <div class="op-card not">
       <div class="op-name">NOT</div>
-      <p class="op-desc"><strong>Inverte</strong> o valor da entrada. Verdadeiro vira Falso, e vice-versa. "NÃO" em português.</p>
+      <p class="op-desc">
+        <strong>Inverte</strong> o valor da entrada.<br>
+        Verdadeiro vira Falso, e vice-versa. "NÃO" em português.
+      </p>
       <table class="truth-table">
         <tr><th>A</th><th>NOT A</th></tr>
         <tr><td class="v">V</td><td class="f">F</td></tr>
@@ -428,6 +519,7 @@
 
   </div>
 
+  <!-- ── Builder ── -->
   <div class="section-label">02 — Monte sua expressão</div>
 
   <div class="builder">
@@ -449,7 +541,7 @@
     </div>
 
     <div class="builder-controls">
-      <button class="btn btn-evaluate" onclick="evaluate()">▶ AVALIAR</button>
+      <button class="btn btn-evaluate" onclick="avaliar()">▶ AVALIAR</button>
       <button class="btn btn-undo"     onclick="undoToken()">↩ DESFAZER</button>
       <button class="btn btn-clear"    onclick="clearExpr()">✕ LIMPAR</button>
     </div>
@@ -465,14 +557,21 @@
 </div>
 
 <script>
+// ── Card demos ──────────────────────────────────────────────
+
 const andState = { a: true, b: true };
 const orState  = { a: false, b: false };
 let   notState = true;
 
 function updateToggle(btnId, val) {
   const btn = document.getElementById(btnId);
-  btn.className = 'toggle-btn ' + (val ? 'active-true' : 'active-false');
-  btn.textContent = btn.textContent.split('=')[0].trim() + ' = ' + (val ? 'Verdadeiro' : 'Falso');
+  if (val) {
+    btn.className = 'toggle-btn active-true';
+    btn.textContent = btn.textContent.split('=')[0].trim() + ' = Verdadeiro';
+  } else {
+    btn.className = 'toggle-btn active-false';
+    btn.textContent = btn.textContent.split('=')[0].trim() + ' = Falso';
+  }
 }
 
 function updateChip(chipId, val) {
@@ -496,18 +595,26 @@ function toggleOr(key) {
 function toggleNot() {
   notState = !notState;
   updateToggle('not-a', notState);
+  const btn = document.getElementById('not-a');
   const res = !notState;
   const chip = document.getElementById('not-result');
   chip.className = 'result-chip ' + (res ? 'true-r' : 'false-r');
   chip.textContent = 'NOT A = ' + (res ? 'Verdadeiro ✓' : 'Falso ✗');
 }
 
+// ── Expression Builder ──────────────────────────────────────
+
 let tokens = [];
+const steps = [];
 
 const classMap = {
-  'VERDADEIRO': 'et-true', 'FALSO': 'et-false',
-  'AND': 'et-and', 'OR': 'et-or', 'NOT': 'et-not',
-  '(': 'et-paren', ')': 'et-paren',
+  'VERDADEIRO': 'et-true',
+  'FALSO':      'et-false',
+  'AND':        'et-and',
+  'OR':         'et-or',
+  'NOT':        'et-not',
+  '(':          'et-paren',
+  ')':          'et-paren',
 };
 
 function renderExpression() {
@@ -539,32 +646,86 @@ function clearExpr() {
   document.getElementById('result-panel').classList.remove('show');
 }
 
-function evaluate() {
+// ── Evaluator ───────────────────────────────────────────────
+
+// Safe recursive parser — não usa eval() nem Function()
+// Precedência: NOT > AND > OR
+
+function parseExpr(toks) {
+  let pos = 0;
+
+  function peek() { return toks[pos]; }
+  function consume() { return toks[pos++]; }
+
+  function parseOR() {
+    let left = parseAND();
+    while (peek() === 'OR') {
+      consume();
+      const right = parseAND();
+      const val = left.val || right.val;
+      left = { val, expr: `${left.label} OR ${right.label}`, label: val ? 'VERDADEIRO' : 'FALSO' };
+    }
+    return left;
+  }
+
+  function parseAND() {
+    let left = parseNOT();
+    while (peek() === 'AND') {
+      consume();
+      const right = parseNOT();
+      const val = left.val && right.val;
+      left = { val, expr: `${left.label} AND ${right.label}`, label: val ? 'VERDADEIRO' : 'FALSO' };
+    }
+    return left;
+  }
+
+  function parseNOT() {
+    if (peek() === 'NOT') {
+      consume();
+      const operand = parseNOT();
+      const val = !operand.val;
+      return { val, expr: `NOT ${operand.label}`, label: val ? 'VERDADEIRO' : 'FALSO' };
+    }
+    return parseAtom();
+  }
+
+  function parseAtom() {
+    const tok = peek();
+    if (tok === 'VERDADEIRO') { consume(); return { val: true,  label: 'VERDADEIRO', expr: null }; }
+    if (tok === 'FALSO')      { consume(); return { val: false, label: 'FALSO',       expr: null }; }
+    if (tok === '(') {
+      consume();
+      const inner = parseOR();
+      if (peek() === ')') consume();
+      inner.label = '(' + inner.label + ')';
+      return inner;
+    }
+    throw new Error('Token inesperado: ' + tok);
+  }
+
+  const result = parseOR();
+  if (pos !== toks.length) throw new Error('Expressão incompleta');
+  return result;
+}
+
+function avaliar() {
   if (tokens.length === 0) return;
 
-  const converted = tokens.map(t => {
-    if (t === 'VERDADEIRO') return 'true';
-    if (t === 'FALSO') return 'false';
-    if (t === 'AND') return '&&';
-    if (t === 'OR') return '||';
-    if (t === 'NOT') return '!';
-    return t;
-  }).join(' ');
+  const panel     = document.getElementById('result-panel');
+  const answerEl  = document.getElementById('result-answer');
+  const stepsList = document.getElementById('steps-list');
+  panel.classList.add('show');
 
-  let result, error = null;
+  let result, steps = [], error = null;
+
   try {
-    result = Function('"use strict"; return (' + converted + ')')();
-    if (typeof result !== 'boolean') throw new Error();
+    // Collect all intermediate steps by wrapping each node
+    const stepsLog = [];
+    result = parseExprWithSteps([...tokens], stepsLog);
+    steps = stepsLog;
   } catch(e) {
     error = 'Expressão inválida. Verifique a ordem dos blocos.';
   }
-
-  const logSteps = buildSteps(tokens);
-  const panel = document.getElementById('result-panel');
-  const answerEl = document.getElementById('result-answer');
-  const stepsList = document.getElementById('steps-list');
-
-  panel.classList.add('show');
 
   if (error) {
     answerEl.className = 'result-answer error-ans';
@@ -573,10 +734,10 @@ function evaluate() {
     return;
   }
 
-  answerEl.className = 'result-answer ' + (result ? 'true-ans' : 'false-ans');
-  answerEl.textContent = result ? '✓ VERDADEIRO' : '✗ FALSO';
+  answerEl.className = 'result-answer ' + (result.val ? 'true-ans' : 'false-ans');
+  answerEl.textContent = result.val ? '✓ VERDADEIRO' : '✗ FALSO';
 
-  stepsList.innerHTML = logSteps.map((s, i) =>
+  stepsList.innerHTML = steps.map((s, i) =>
     `<li>
       <span class="step-num">${i+1}</span>
       <span>${s.expr}</span>
@@ -586,51 +747,69 @@ function evaluate() {
   ).join('');
 }
 
-function buildSteps(toks) {
-  const steps = [];
-  const flat = [...toks];
+function parseExprWithSteps(toks, log) {
+  let pos = 0;
 
-  for (let j = 0; j < flat.length; j++) {
-    if (flat[j] === 'NOT') {
-      const operand = flat[j+1];
-      if (operand === 'VERDADEIRO' || operand === 'FALSO') {
-        steps.push({ expr: `NOT ${operand}`, val: !(operand === 'VERDADEIRO') });
-      }
+  function peek() { return toks[pos]; }
+  function consume() { return toks[pos++]; }
+
+  function parseOR() {
+    let left = parseAND();
+    while (peek() === 'OR') {
+      consume();
+      const right = parseAND();
+      const val = left.val || right.val;
+      const expr = `${left.label} OR ${right.label}`;
+      log.push({ expr, val });
+      left = { val, label: val ? 'VERDADEIRO' : 'FALSO' };
     }
+    return left;
   }
 
-  for (let j = 0; j < flat.length; j++) {
-    if (flat[j] === 'AND') {
-      const left = flat[j-1], right = flat[j+1];
-      if ((left === 'VERDADEIRO' || left === 'FALSO') && (right === 'VERDADEIRO' || right === 'FALSO')) {
-        steps.push({ expr: `${left} AND ${right}`, val: (left === 'VERDADEIRO') && (right === 'VERDADEIRO') });
-      }
+  function parseAND() {
+    let left = parseNOT();
+    while (peek() === 'AND') {
+      consume();
+      const right = parseNOT();
+      const val = left.val && right.val;
+      const expr = `${left.label} AND ${right.label}`;
+      log.push({ expr, val });
+      left = { val, label: val ? 'VERDADEIRO' : 'FALSO' };
     }
+    return left;
   }
 
-  for (let j = 0; j < flat.length; j++) {
-    if (flat[j] === 'OR') {
-      const left = flat[j-1], right = flat[j+1];
-      if ((left === 'VERDADEIRO' || left === 'FALSO') && (right === 'VERDADEIRO' || right === 'FALSO')) {
-        steps.push({ expr: `${left} OR ${right}`, val: (left === 'VERDADEIRO') || (right === 'VERDADEIRO') });
-      }
+  function parseNOT() {
+    if (peek() === 'NOT') {
+      consume();
+      const operand = parseNOT();
+      const val = !operand.val;
+      const expr = `NOT ${operand.label}`;
+      log.push({ expr, val });
+      return { val, label: val ? 'VERDADEIRO' : 'FALSO' };
     }
+    return parseAtom();
   }
 
-  try {
-    const conv = toks.map(t => {
-      if (t === 'VERDADEIRO') return 'true';
-      if (t === 'FALSO') return 'false';
-      if (t === 'AND') return '&&';
-      if (t === 'OR') return '||';
-      if (t === 'NOT') return '!';
-      return t;
-    }).join(' ');
-    const finalVal = Function('"use strict"; return (' + conv + ')')();
-    steps.push({ expr: 'Expressão completa: ' + toks.join(' '), val: finalVal });
-  } catch(e) {}
+  function parseAtom() {
+    const tok = peek();
+    if (tok === 'VERDADEIRO') { consume(); return { val: true,  label: 'VERDADEIRO' }; }
+    if (tok === 'FALSO')      { consume(); return { val: false, label: 'FALSO' }; }
+    if (tok === '(') {
+      consume();
+      const inner = parseOR();
+      if (peek() === ')') consume();
+      return { val: inner.val, label: '(' + inner.label + ')' };
+    }
+    throw new Error('Token inesperado');
+  }
 
-  return steps;
+  const result = parseOR();
+  if (pos !== toks.length) throw new Error('Expressão incompleta');
+
+  // Add final summary step
+  log.push({ expr: 'Resultado final: ' + tokens.join(' '), val: result.val });
+  return result;
 }
 </script>
 </body>
